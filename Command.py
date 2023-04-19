@@ -9,7 +9,7 @@ import pandas as pd
 import json
 import psycopg2 as pg2
 
-
+#This Function is used for getting data from a file to a dataframe and save it to csv.
 def file_to_dataframe(file_path):
     df = pd.read_csv(file_path, delimiter=',')
     
