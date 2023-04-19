@@ -19,6 +19,7 @@ def file_to_dataframe(file_path):
 
     return df 
 
+#This Function is used to insert dataframe to a table in database.
 def insert_df_to_table(df, table_name, dbname, user, password, host, port):
 
     conn = pg2.connect(dbname=dbname, user=user, password=password, host=host, port=port)
