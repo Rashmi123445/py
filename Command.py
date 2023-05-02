@@ -2,7 +2,7 @@
 """
 Created on Mon Apr 10 09:38:17 2023
 
-@author: hp
+@author: rashmi
 """
 import requests
 import pandas as pd
@@ -37,7 +37,7 @@ def insert_df_to_table(df, table_name, dbname, user, password, host, port):
     conn.close()
 
 
-#This function is used to copy data from data frame to a table existing in database
+#This function is used to read table from a database to a dataframe.
 def read_table_to_df(table_name, dbname, user, password, host, port):
     
     conn = pg2.connect(dbname=dbname, user=user, password=password, host=host, port=port)
@@ -50,6 +50,7 @@ def read_table_to_df(table_name, dbname, user, password, host, port):
     conn.close()
     return df
 
+#This function is used to send request to nginx server
 def send_nginx_request(url, method='GET', headers=None, data=None):
     try:
         response = requests.request(method, url, headers=headers, data=data)
@@ -57,7 +58,7 @@ def send_nginx_request(url, method='GET', headers=None, data=None):
     except Exception as e:
         return f"Error: {e}"
 
-
+#This function is used to get response from nginx server
 def get_nginx_response(url):
    
     response = requests.get(url)
@@ -66,7 +67,7 @@ def get_nginx_response(url):
     else:
         print(f"Failed to retrieve response. HTTP status code: {response.status_code}")
         return None
-
+#This function is used to get data from a csv file and copy data to a table existing in database while using post request method on an nginx server
 def process_data(file_path,url, table_name):
     # Read data from URL
     d1 = pd.read_csv(file_path)
