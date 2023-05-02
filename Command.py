@@ -37,7 +37,7 @@ def insert_df_to_table(df, table_name, dbname, user, password, host, port):
     conn.close()
 
 
-
+#This function is used to read table from a database to a dataframe.
 def read_table_to_df(table_name, dbname, user, password, host, port):
     
     conn = pg2.connect(dbname=dbname, user=user, password=password, host=host, port=port)
@@ -49,6 +49,7 @@ def read_table_to_df(table_name, dbname, user, password, host, port):
     cur.close()
     conn.close()
     return df
+
 
 def send_nginx_request(url, method='GET', headers=None, data=None):
     try:
